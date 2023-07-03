@@ -23,9 +23,9 @@ class BookDetailsView extends StatelessWidget {
             icon: const Icon(
               Icons.shopping_cart_outlined,
             ),
-          ),
-          const SizedBox(
-            width: 30.0,
+            padding: const EdgeInsets.only(
+              right: 30.0,
+            ),
           ),
         ],
       ),
