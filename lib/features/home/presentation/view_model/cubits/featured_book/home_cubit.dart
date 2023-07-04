@@ -2,13 +2,13 @@ import 'package:bookly_app/features/home/data/models/BookModel.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'featured_book_state.dart';
+part 'home_states.dart';
 
-class FeaturedBookCubit extends Cubit<FeaturedBookStates> {
-  FeaturedBookCubit() : super(FeaturedBookInitial());
-  late HomeRepo homeRepo;
+class HomeCubit extends Cubit<HomeStates> {
+  HomeCubit(this.homeRepo) : super(FeaturedBookInitial());
+  final HomeRepo homeRepo;
 
-  static FeaturedBookCubit get(context) => BlocProvider.of(context);
+  static HomeCubit get(context) => BlocProvider.of(context);
   List<BookModel> newestBooks = [];
   List<BookModel> featuredBooks = [];
 
