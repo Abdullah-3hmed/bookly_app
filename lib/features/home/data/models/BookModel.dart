@@ -4,7 +4,7 @@ class BookModel {
     this.id,
     this.etag,
     this.selfLink,
-    this.volumeInfo,
+    required this.volumeInfo,
     this.saleInfo,
     this.accessInfo,
     this.searchInfo,
@@ -15,7 +15,7 @@ class BookModel {
     id = json['id'];
     etag = json['etag'];
     selfLink = json['selfLink'];
-    volumeInfo = json['volumeInfo'] != null ? VolumeInfo.fromJson(json['volumeInfo']) : null;
+    volumeInfo = VolumeInfo.fromJson(json['volumeInfo']);
     saleInfo = json['saleInfo'] != null ? SaleInfo.fromJson(json['saleInfo']) : null;
     accessInfo = json['accessInfo'] != null ? AccessInfo.fromJson(json['accessInfo']) : null;
     searchInfo = json['searchInfo'] != null ? SearchInfo.fromJson(json['searchInfo']) : null;
@@ -24,31 +24,10 @@ class BookModel {
   String? id;
   String? etag;
   String? selfLink;
-  VolumeInfo? volumeInfo;
+  late final VolumeInfo volumeInfo;
   SaleInfo? saleInfo;
   AccessInfo? accessInfo;
   SearchInfo? searchInfo;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['kind'] = kind;
-    map['id'] = id;
-    map['etag'] = etag;
-    map['selfLink'] = selfLink;
-    if (volumeInfo != null) {
-      map['volumeInfo'] = volumeInfo?.toJson();
-    }
-    if (saleInfo != null) {
-      map['saleInfo'] = saleInfo?.toJson();
-    }
-    if (accessInfo != null) {
-      map['accessInfo'] = accessInfo?.toJson();
-    }
-    if (searchInfo != null) {
-      map['searchInfo'] = searchInfo?.toJson();
-    }
-    return map;
-  }
 }
 
 class SearchInfo {
@@ -208,7 +187,7 @@ class VolumeInfo {
     this.allowAnonLogging,
     this.contentVersion,
     this.panelizationSummary,
-    this.imageLinks,
+    required this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
@@ -235,7 +214,7 @@ class VolumeInfo {
     allowAnonLogging = json['allowAnonLogging'];
     contentVersion = json['contentVersion'];
     panelizationSummary = json['panelizationSummary'] != null ? PanelizationSummary.fromJson(json['panelizationSummary']) : null;
-    imageLinks = json['imageLinks'] != null ? ImageLinks.fromJson(json['imageLinks']) : null;
+    imageLinks = ImageLinks.fromJson(json['imageLinks']);
     language = json['language'];
     previewLink = json['previewLink'];
     infoLink = json['infoLink'];
@@ -255,57 +234,25 @@ class VolumeInfo {
   bool? allowAnonLogging;
   String? contentVersion;
   PanelizationSummary? panelizationSummary;
-  ImageLinks? imageLinks;
+  late ImageLinks imageLinks;
   String? language;
   String? previewLink;
   String? infoLink;
   String? canonicalVolumeLink;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['title'] = title;
-    map['authors'] = authors;
-    map['publisher'] = publisher;
-    map['publishedDate'] = publishedDate;
-    map['description'] = description;
-    if (industryIdentifiers != null) {
-      map['industryIdentifiers'] = industryIdentifiers?.map((v) => v.toJson()).toList();
-    }
-    if (readingModes != null) {
-      map['readingModes'] = readingModes?.toJson();
-    }
-    map['pageCount'] = pageCount;
-    map['printType'] = printType;
-    map['categories'] = categories;
-    map['maturityRating'] = maturityRating;
-    map['allowAnonLogging'] = allowAnonLogging;
-    map['contentVersion'] = contentVersion;
-    if (panelizationSummary != null) {
-      map['panelizationSummary'] = panelizationSummary?.toJson();
-    }
-    if (imageLinks != null) {
-      map['imageLinks'] = imageLinks?.toJson();
-    }
-    map['language'] = language;
-    map['previewLink'] = previewLink;
-    map['infoLink'] = infoLink;
-    map['canonicalVolumeLink'] = canonicalVolumeLink;
-    return map;
-  }
 }
 
 class ImageLinks {
   ImageLinks({
-    this.smallThumbnail,
-    this.thumbnail,
+    required this.smallThumbnail,
+    required this.thumbnail,
   });
 
   ImageLinks.fromJson(dynamic json) {
     smallThumbnail = json['smallThumbnail'];
     thumbnail = json['thumbnail'];
   }
-  String? smallThumbnail;
-  String? thumbnail;
+  late String smallThumbnail;
+  late String thumbnail;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
