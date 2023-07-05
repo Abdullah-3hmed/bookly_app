@@ -1,4 +1,3 @@
-import 'package:bookly_app/features/home/presentation/view_model/views/widgets/book_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class SearchResultListView extends StatelessWidget {
@@ -10,7 +9,7 @@ class SearchResultListView extends StatelessWidget {
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.zero,
-        itemBuilder: (context, index) => const BookListViewItem(),
+        itemBuilder: (context, index) => const Text('data'), //BookListViewItem(bookModel: null,),
         separatorBuilder: (context, index) => const SizedBox(
           height: 20.0,
         ),

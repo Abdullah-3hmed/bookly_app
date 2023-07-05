@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/home/presentation/view_model/cubits/featured_book/home_cubit.dart';
+import 'package:bookly_app/features/home/presentation/view_model/cubits/home/home_cubit.dart';
 import 'package:bookly_app/features/home/presentation/view_model/views/widgets/custom_list_view_item.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class FeaturedBooksListView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => CustomBookImage(
-                imageUrl: HomeCubit.get(context).featuredBooks[index].volumeInfo.imageLinks.thumbnail,
+                imageUrl: HomeCubit.get(context).featuredBooks[index].volumeInfo.imageLinks?.thumbnail ?? '',
               ),
               separatorBuilder: (context, index) => const SizedBox(
                 width: 10.0,

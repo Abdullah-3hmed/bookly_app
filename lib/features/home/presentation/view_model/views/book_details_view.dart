@@ -1,8 +1,11 @@
+import 'package:bookly_app/features/home/data/models/BookModel.dart';
 import 'package:bookly_app/features/home/presentation/view_model/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+  const BookDetailsView({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class BookDetailsView extends StatelessWidget {
           ),
         ],
       ),
-      body: const BookDetailsViewBody(),
+      body: BookDetailsViewBody(bookModel: bookModel),
     );
   }
 }

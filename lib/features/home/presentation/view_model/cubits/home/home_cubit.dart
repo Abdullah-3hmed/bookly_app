@@ -11,6 +11,7 @@ class HomeCubit extends Cubit<HomeStates> {
   static HomeCubit get(context) => BlocProvider.of(context);
   List<BookModel> newestBooks = [];
   List<BookModel> featuredBooks = [];
+  List<BookModel> relatedBooks = [];
 
   Future<void> fetchFeaturedBooks() async {
     emit(GetFeaturedBooksLoadingState());
@@ -35,6 +36,21 @@ class HomeCubit extends Cubit<HomeStates> {
     }, (books) {
       newestBooks = books;
       emit(GetNewestBooksSuccessState());
+    });
+  }
+
+  Future<void> fetchRelatedBooks({
+    required String category,
+  }) async {
+    emit(GetRelatedBooksLoadingState());
+    var result = await homeRepo.fetchRelatedBooks(category: category);
+    result.fold((failure) {
+      emit(
+        GetRelatedBooksErrorState(failure.errorMessage),
+      );
+    }, (books) {
+      relatedBooks = books;
+      emit(GetRelatedBooksSuccessState());
     });
   }
 }

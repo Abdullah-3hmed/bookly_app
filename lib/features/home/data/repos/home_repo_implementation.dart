@@ -11,7 +11,7 @@ class HomeRepoImpl implements HomeRepo {
     List<BookModel> books = [];
     try {
       var value = await DioHelper.getData(
-        endPoint: 'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&Sorting=newest &q=subject:programming',
+        endPoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=subject:programming',
       );
       for (var item in value.data?['items']) {
         books.add(BookModel.fromJson(item));
@@ -30,7 +30,26 @@ class HomeRepoImpl implements HomeRepo {
     List<BookModel> books = [];
     try {
       var value = await DioHelper.getData(
-        endPoint: 'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&q=subject:programming',
+        endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming',
+      );
+      for (var item in value.data?['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (error) {
+      if (error is DioException) {
+        return left(ServerFailure.fromDioError(error));
+      }
+      return left(ServerFailure(error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchRelatedBooks({required String category}) async {
+    List<BookModel> books = [];
+    try {
+      var value = await DioHelper.getData(
+        endPoint: 'volumes?Filtering=free-ebooks&Sorting=relevance&q=subject:programming',
       );
       for (var item in value.data?['items']) {
         books.add(BookModel.fromJson(item));

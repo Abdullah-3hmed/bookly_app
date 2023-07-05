@@ -23,3 +23,13 @@ class GetNewestBooksErrorState extends HomeStates {
 
   GetNewestBooksErrorState(this.error);
 }
+
+class GetRelatedBooksLoadingState extends HomeStates {}
+
+class GetRelatedBooksSuccessState extends HomeStates {}
+
+class GetRelatedBooksErrorState extends HomeStates {
+  final String error;
+
+  GetRelatedBooksErrorState(this.error);
+}

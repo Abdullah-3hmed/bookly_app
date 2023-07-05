@@ -20,6 +20,7 @@ class BookModel {
     accessInfo = json['accessInfo'] != null ? AccessInfo.fromJson(json['accessInfo']) : null;
     searchInfo = json['searchInfo'] != null ? SearchInfo.fromJson(json['searchInfo']) : null;
   }
+
   String? kind;
   String? id;
   String? etag;
@@ -38,6 +39,7 @@ class SearchInfo {
   SearchInfo.fromJson(dynamic json) {
     textSnippet = json['textSnippet'];
   }
+
   String? textSnippet;
 
   Map<String, dynamic> toJson() {
@@ -73,6 +75,7 @@ class AccessInfo {
     accessViewStatus = json['accessViewStatus'];
     quoteSharingAllowed = json['quoteSharingAllowed'];
   }
+
   String? country;
   String? viewability;
   bool? embeddable;
@@ -114,6 +117,7 @@ class Pdf {
     isAvailable = json['isAvailable'];
     acsTokenLink = json['acsTokenLink'];
   }
+
   bool? isAvailable;
   String? acsTokenLink;
 
@@ -135,6 +139,7 @@ class Epub {
     isAvailable = json['isAvailable'];
     acsTokenLink = json['acsTokenLink'];
   }
+
   bool? isAvailable;
   String? acsTokenLink;
 
@@ -158,6 +163,7 @@ class SaleInfo {
     saleability = json['saleability'];
     isEbook = json['isEbook'];
   }
+
   String? country;
   String? saleability;
   bool? isEbook;
@@ -187,7 +193,7 @@ class VolumeInfo {
     this.allowAnonLogging,
     this.contentVersion,
     this.panelizationSummary,
-    required this.imageLinks,
+    this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
@@ -220,6 +226,7 @@ class VolumeInfo {
     infoLink = json['infoLink'];
     canonicalVolumeLink = json['canonicalVolumeLink'];
   }
+
   String? title;
   List<String>? authors;
   String? publisher;
@@ -234,7 +241,7 @@ class VolumeInfo {
   bool? allowAnonLogging;
   String? contentVersion;
   PanelizationSummary? panelizationSummary;
-  late ImageLinks imageLinks;
+  ImageLinks? imageLinks;
   String? language;
   String? previewLink;
   String? infoLink;
@@ -251,6 +258,7 @@ class ImageLinks {
     smallThumbnail = json['smallThumbnail'];
     thumbnail = json['thumbnail'];
   }
+
   late String smallThumbnail;
   late String thumbnail;
 
@@ -272,6 +280,7 @@ class PanelizationSummary {
     containsEpubBubbles = json['containsEpubBubbles'];
     containsImageBubbles = json['containsImageBubbles'];
   }
+
   bool? containsEpubBubbles;
   bool? containsImageBubbles;
 
@@ -293,6 +302,7 @@ class ReadingModes {
     text = json['text'];
     image = json['image'];
   }
+
   bool? text;
   bool? image;
 
@@ -314,6 +324,7 @@ class IndustryIdentifiers {
     type = json['type'];
     identifier = json['identifier'];
   }
+
   String? type;
   String? identifier;
 
